@@ -1,5 +1,6 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Pavel-Kr/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Pavel-Kr/python-project-52/actions)
+[![Maintainability](https://api.codeclimate.com/v1/badges/549890e87e6337b69c25/maintainability)](https://codeclimate.com/github/Pavel-Kr/python-project-52/maintainability)
 
 # Task Manager
 
