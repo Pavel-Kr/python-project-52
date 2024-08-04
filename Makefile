@@ -4,6 +4,8 @@ install:
 migrate:
 	poetry run python3 manage.py migrate
 
+build: install migrate
+
 run-server:
 	poetry run python3 -m gunicorn task_manager.asgi:application -k uvicorn.workers.UvicornWorker
 
