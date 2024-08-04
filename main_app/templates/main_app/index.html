@@ -1,11 +1,32 @@
+{% load django_bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <title>Task manager</title>
 </head>
 <body>
-    <h1>Менеджер задач</h1>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="container-lg">
+            <a href="#" class="navbar-brand">Task manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>          
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Log in</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Sign up</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container mt-5">
+        <h1>Task manager</h1>
+    </main>
 </body>
 </html>
