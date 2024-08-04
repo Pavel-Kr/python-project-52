@@ -6,3 +6,6 @@ dev:
 
 create-dev-db:
 	createdb task_manager_db
+
+lint:
+	poetry run flake8
