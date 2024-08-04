@@ -29,9 +29,7 @@ load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG')
-
-DATABASE_URL = os.getenv('DATABASE_URL')
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
 
@@ -91,8 +89,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        DATABASE_URL,
-        default='sqlite:///db.sqlite3',
+        'DATABASE_URL',
         conn_max_age=600
     )
 }
