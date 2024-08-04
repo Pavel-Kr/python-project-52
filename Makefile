@@ -1,11 +1,12 @@
 install:
 	poetry install
+	poetry run python3 manage.py migrate
+
+run-server:
+	poetry run python3 -m gunicorn task_manager.asgi:application -k uvicorn.workers.UvicornWorker
 
 dev:
 	poetry run python3 manage.py runserver
-
-create-dev-db:
-	createdb task_manager_db
 
 lint:
 	poetry run flake8

@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         DATABASE_URL,
-        default='postgresql://pavel:1234@localhost:5432/task_manager_db',
+        default='sqlite:///db.sqlite3',
         conn_max_age=600
     )
 }
