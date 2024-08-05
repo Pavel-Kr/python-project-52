@@ -4,7 +4,10 @@ install:
 migrate:
 	poetry run python3 manage.py migrate
 
-build: install migrate
+collectstatic:
+	poetry run python3 manage.py collectstatic
+
+build: install migrate collectstatic
 
 run-server:
 	poetry run python3 -m gunicorn task_manager.asgi:application -k uvicorn.workers.UvicornWorker
