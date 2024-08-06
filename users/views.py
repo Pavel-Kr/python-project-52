@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
@@ -23,3 +22,9 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     template_name = 'users/create.html'
     success_url = reverse_lazy('users:index')
     success_message = _('User successfully registered')
+
+
+class UserLoginView(SuccessMessageMixin, LoginView):
+    model = User
+    template_name = 'users/login.html'
+    success_message = _('You logged in')

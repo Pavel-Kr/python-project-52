@@ -20,8 +20,12 @@
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a href="{% url "users:index" %}" class="nav-link">{% translate "Users" %}</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">{% translate "Log in" %}</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item"><a href="#" class="nav-link">{% translate "Log out" %}</a></li>
+                    {% else %}
+                    <li class="nav-item"><a href="{% url "users:login" %}" class="nav-link">{% translate "Log in" %}</a></li>
                     <li class="nav-item"><a href="{% url "users:create" %}" class="nav-link">{% translate "Sign up" %}</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
