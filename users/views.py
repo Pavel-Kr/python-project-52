@@ -1,13 +1,17 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
-from users.forms import RegisterForm
+from users.forms import RegisterForm, EditForm
 
 
 class UserListView(ListView):
@@ -37,3 +41,22 @@ class UserLogoutView(LogoutView):
     def post(self, request, *args, **kwargs):
         messages.success(request, self.success_message)
         return super().post(request, args, kwargs)
+
+
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = 'users/update.html'
+    form_class = EditForm
+    success_url = reverse_lazy('users:index')
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
+
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        pk = kwargs.get('pk')
+        if pk != request.user.pk:
+            messages.error(request,
+                           _("You do not have permission to edit other users!"))
+            return redirect('users:index')
+        return super().get(request, *args, **kwargs)

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+{% translate "Edit user" %}
+{% endblock  %}
+
+{% block content %}
+<h1>{% translate "Edit user" %}</h1>
+<form action="{% url "users:update" object.id %}" method="post" class="mt-4">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" value="{% translate "Edit" %}" class="btn btn-primary">
+</form>
+{% endblock %}
