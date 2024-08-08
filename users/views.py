@@ -6,7 +6,7 @@ from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
@@ -43,11 +43,12 @@ class UserLogoutView(LogoutView):
         return super().post(request, args, kwargs)
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
+class UserUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = User
     template_name = 'users/update.html'
     form_class = EditForm
     success_url = reverse_lazy('users:index')
+    success_message = _('User successfully updated')
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
@@ -58,5 +59,21 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
         if pk != request.user.pk:
             messages.error(request,
                            _("You do not have permission to edit other users!"))
+            return redirect('users:index')
+        return super().get(request, *args, **kwargs)
+    
+
+class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    template_name = 'users/delete_confirm.html'
+    model = User
+    success_url = reverse_lazy('users:index')
+    success_message = _('User successfully deleted')
+    template_name_field = 'user'
+
+    def get(self, request, *args, **kwargs) -> HttpResponse:
+        pk = kwargs.get('pk')
+        if pk != request.user.pk:
+            messages.error(request,
+                           _("You do not have permission to delete other users!"))
             return redirect('users:index')
         return super().get(request, *args, **kwargs)
