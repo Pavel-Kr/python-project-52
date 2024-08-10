@@ -19,11 +19,13 @@ gunicorn = "^22.0.0"
 uvicorn = "^0.30.5"
 django-bootstrap5 = "^24.2"
 whitenoise = "^6.7.0"
+ipython = "^8.26.0"
 
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.0"
 django-debug-toolbar = "^4.4.6"
+django-extensions = "^3.2.3"
 
 [build-system]
 requires = ["poetry-core"]

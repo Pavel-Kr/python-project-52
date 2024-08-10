@@ -34,7 +34,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['testserver', '127.0.0.1']
 
 INTERNAL_IPS = [
     "127.0.0.1",
@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_bootstrap5',
+    'django_extensions',
 
     'main_app',
     'users'
