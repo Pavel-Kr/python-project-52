@@ -15,7 +15,6 @@ from users.utils import SameUserMixin
 
 class UserListView(ListView):
     model = User
-    paginate_by = 20
     template_name = 'users/index.html'
     context_object_name = 'users'
 

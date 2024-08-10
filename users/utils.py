@@ -10,9 +10,9 @@ class SameUserMixin:
     error_message = _('You do not have permission')
     error_url = '/'
 
-    def get(self, request, *args, **kwargs):
+    def dispatch(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         if pk != request.user.pk:
             messages.error(request, self.error_message)
             return redirect(self.error_url)
-        return super().get(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
