@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext as _
 
 from .forms import StatusForm
@@ -19,23 +20,25 @@ class StatusListView(LoginRequiredMixin, ListView):
         return super().handle_no_permission()
 
 
-class StatusCreateView(LoginRequiredMixin, CreateView):
+class StatusCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Status
     template_name = 'statuses/create.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses:index')
+    success_message = _('Status successfully created')
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
         return super().handle_no_permission()
     
 
-class StatusUpdateView(LoginRequiredMixin, UpdateView):
+class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Status
     template_name = 'statuses/update.html'
     form_class = StatusForm
     success_url = reverse_lazy('statuses:index')
     context_object_name = 'status'
+    success_message = _('Status successfully updated')
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
