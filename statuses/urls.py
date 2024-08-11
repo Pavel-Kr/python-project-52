@@ -7,4 +7,5 @@ app_name = 'statuses'
 urlpatterns = [
     path('', views.StatusListView.as_view(), name='index'),
     path('create/', views.StatusCreateView.as_view(), name='create'),
+    path('<int:pk>/update/', views.StatusUpdateView.as_view(), name='update'),
 ]
