@@ -10,6 +10,7 @@
 {% block content %}
 <form action="{% url "users:login" %}" method="post">
     {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}">
     {% bootstrap_form form %}
     <input type="submit" value="{% translate "Log in" %}" class="btn btn-primary">
 </form>
