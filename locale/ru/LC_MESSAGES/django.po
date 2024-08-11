@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-11 15:00+0700\n"
+"POT-Creation-Date: 2024-08-11 13:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,21 +25,113 @@ msgstr ""
 msgid "Task manager"
 msgstr "Менеджер задач"
 
+#: statuses/models.py:6 statuses/templates/statuses/index.html:17
+msgid "Name"
+msgstr "Имя"
+
+#: statuses/models.py:7
+msgid "Creation time"
+msgstr "Время создания"
+
+#: statuses/models.py:8
+msgid "Last update time"
+msgstr "Время последнего обновления"
+
+#: statuses/models.py:11
+msgid "status"
+msgstr "статус"
+
+#: statuses/models.py:12
+msgid "statuses"
+msgstr "статусы"
+
+#: statuses/templates/statuses/create.html:7
+#: statuses/templates/statuses/create.html:11
+#: statuses/templates/statuses/index.html:12
+msgid "Create status"
+msgstr "Создать статус"
+
+#: statuses/templates/statuses/create.html:15
+msgid "Create"
+msgstr "Создать"
+
+#: statuses/templates/statuses/delete.html:7
+#: statuses/templates/statuses/delete.html:11
+msgid "Delete status"
+msgstr "Удалить статус"
+
+#: statuses/templates/statuses/delete.html:12
+#: users/templates/users/delete_confirm.html:12
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: statuses/templates/statuses/delete.html:15
+#: users/templates/users/delete_confirm.html:15
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: statuses/templates/statuses/index.html:7
+#: statuses/templates/statuses/index.html:11 templates/base.html:25
+msgid "Statuses"
+msgstr "Статусы"
+
+#: statuses/templates/statuses/index.html:18
+#: users/templates/users/index.html:18
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: statuses/templates/statuses/index.html:29
+#: users/templates/users/index.html:30
+msgid "Update"
+msgstr "Изменить"
+
+#: statuses/templates/statuses/index.html:30
+#: users/templates/users/index.html:32
+msgid "Delete"
+msgstr "Удалить"
+
+#: statuses/templates/statuses/update.html:7
+#: statuses/templates/statuses/update.html:11
+msgid "Edit status"
+msgstr "Изменить статус"
+
+#: statuses/templates/statuses/update.html:15
+#: users/templates/users/update.html:15
+msgid "Edit"
+msgstr "Изменить"
+
+#: statuses/views.py:19 statuses/views.py:31 statuses/views.py:44
+#: statuses/views.py:56 users/views.py:57 users/views.py:74
+msgid "You are not logged in"
+msgstr "Вы не залогинены"
+
+#: statuses/views.py:28
+msgid "Status successfully created"
+msgstr "Статус успешно обновлен"
+
+#: statuses/views.py:41
+msgid "Status successfully updated"
+msgstr "Статус успешно обновлен"
+
+#: statuses/views.py:53
+msgid "Status successfully deleted"
+msgstr "Статус успешно удален"
+
 #: templates/base.html:22 users/templates/users/index.html:7
 #: users/templates/users/index.html:11
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/base.html:27
+#: templates/base.html:30
 msgid "Log out"
 msgstr "Выйти"
 
-#: templates/base.html:31 users/templates/users/login.html:7
-#: users/templates/users/login.html:14
+#: templates/base.html:34 users/templates/users/login.html:7
+#: users/templates/users/login.html:15
 msgid "Log in"
 msgstr "Войти"
 
-#: templates/base.html:32 users/templates/users/create.html:7
+#: templates/base.html:35 users/templates/users/create.html:7
 #: users/templates/users/create.html:11
 msgid "Registration"
 msgstr "Регистрация"
@@ -53,14 +145,6 @@ msgstr "Зарегистрировать"
 msgid "Delete user"
 msgstr "Удалить пользователя"
 
-#: users/templates/users/delete_confirm.html:12
-msgid "Are you sure you want to delete"
-msgstr "Вы уверены, что хотите удалить"
-
-#: users/templates/users/delete_confirm.html:15
-msgid "Yes, delete"
-msgstr "Да, удалить"
-
 #: users/templates/users/index.html:16
 msgid "User name"
 msgstr "Имя пользователя"
@@ -69,25 +153,9 @@ msgstr "Имя пользователя"
 msgid "Full name"
 msgstr "Полное имя"
 
-#: users/templates/users/index.html:18
-msgid "Creation date"
-msgstr "Дата создания"
-
-#: users/templates/users/index.html:30
-msgid "Update"
-msgstr "Изменить"
-
-#: users/templates/users/index.html:32
-msgid "Delete"
-msgstr "Удалить"
-
 #: users/templates/users/update.html:7 users/templates/users/update.html:11
 msgid "Edit user"
 msgstr "Изменить пользователя"
-
-#: users/templates/users/update.html:15
-msgid "Edit"
-msgstr "Изменить"
 
 #: users/utils.py:10
 msgid "You do not have permission"
@@ -112,10 +180,6 @@ msgstr "Пользователь успешно обновлен"
 #: users/views.py:54
 msgid "You do not have permission to edit other users!"
 msgstr "У вас нет прав на изменение других пользователей!"
-
-#: users/views.py:57
-msgid "You are not logged in"
-msgstr "Вы не залогинены"
 
 #: users/views.py:68
 msgid "User successfully deleted"
