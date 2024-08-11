@@ -16,6 +16,7 @@ class Status(models.Model):
     class Meta:
         verbose_name = _('status')
         verbose_name_plural = _('statuses')
+        ordering = ['pk']
 
     def __str__(self) -> str:
         return self.name
