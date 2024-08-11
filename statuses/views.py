@@ -1,6 +1,6 @@
 from django.http.response import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -39,6 +39,18 @@ class StatusUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('statuses:index')
     context_object_name = 'status'
     success_message = _('Status successfully updated')
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
+    
+
+class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Status
+    template_name = 'statuses/delete.html'
+    success_url = reverse_lazy('statuses:index')
+    context_object_name = 'status'
+    success_message = _('Status successfully deleted')
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
