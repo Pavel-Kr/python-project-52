@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-11 14:37+0700\n"
+"POT-Creation-Date: 2024-08-11 15:00+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: main_app/templates/main_app/index.html:7
 #: main_app/templates/main_app/index.html:11 templates/base.html:16
 msgid "Task manager"
@@ -38,13 +39,14 @@ msgstr "Выйти"
 msgid "Log in"
 msgstr "Войти"
 
-#: templates/base.html:32 users/templates/users/create.html:15
-msgid "Sign up"
-msgstr "Регистрация"
-
-#: users/templates/users/create.html:7 users/templates/users/create.html:11
+#: templates/base.html:32 users/templates/users/create.html:7
+#: users/templates/users/create.html:11
 msgid "Registration"
 msgstr "Регистрация"
+
+#: users/templates/users/create.html:15
+msgid "Register"
+msgstr "Зарегистрировать"
 
 #: users/templates/users/delete_confirm.html:7
 #: users/templates/users/delete_confirm.html:11
@@ -122,3 +124,6 @@ msgstr "Пользователь успешно удален"
 #: users/views.py:71
 msgid "You do not have permission to delete other users!"
 msgstr "У вас нет прав на удаление других пользователей!"
+
+#~ msgid "Sign up"
+#~ msgstr "Зарегистрировать"
