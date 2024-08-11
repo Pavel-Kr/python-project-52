@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-11 14:37+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+#: main_app/templates/main_app/index.html:7
+#: main_app/templates/main_app/index.html:11 templates/base.html:16
+msgid "Task manager"
+msgstr "Менеджер задач"
+
+#: templates/base.html:22 users/templates/users/index.html:7
+#: users/templates/users/index.html:11
+msgid "Users"
+msgstr "Пользователи"
+
+#: templates/base.html:27
+msgid "Log out"
+msgstr "Выйти"
+
+#: templates/base.html:31 users/templates/users/login.html:7
+#: users/templates/users/login.html:14
+msgid "Log in"
+msgstr "Войти"
+
+#: templates/base.html:32 users/templates/users/create.html:15
+msgid "Sign up"
+msgstr "Регистрация"
+
+#: users/templates/users/create.html:7 users/templates/users/create.html:11
+msgid "Registration"
+msgstr "Регистрация"
+
+#: users/templates/users/delete_confirm.html:7
+#: users/templates/users/delete_confirm.html:11
+msgid "Delete user"
+msgstr "Удалить пользователя"
+
+#: users/templates/users/delete_confirm.html:12
+msgid "Are you sure you want to delete"
+msgstr "Вы уверены, что хотите удалить"
+
+#: users/templates/users/delete_confirm.html:15
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: users/templates/users/index.html:16
+msgid "User name"
+msgstr "Имя пользователя"
+
+#: users/templates/users/index.html:17
+msgid "Full name"
+msgstr "Полное имя"
+
+#: users/templates/users/index.html:18
+msgid "Creation date"
+msgstr "Дата создания"
+
+#: users/templates/users/index.html:30
+msgid "Update"
+msgstr "Изменить"
+
+#: users/templates/users/index.html:32
+msgid "Delete"
+msgstr "Удалить"
+
+#: users/templates/users/update.html:7 users/templates/users/update.html:11
+msgid "Edit user"
+msgstr "Изменить пользователя"
+
+#: users/templates/users/update.html:15
+msgid "Edit"
+msgstr "Изменить"
+
+#: users/utils.py:10
+msgid "You do not have permission"
+msgstr "У вас нет прав"
+
+#: users/views.py:27
+msgid "User successfully registered"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: users/views.py:33
+msgid "You logged in"
+msgstr "Вы залогинены"
+
+#: users/views.py:37
+msgid "You logged out"
+msgstr "Вы разлогинены"
+
+#: users/views.py:52
+msgid "User successfully updated"
+msgstr "Пользователь успешно обновлен"
+
+#: users/views.py:54
+msgid "You do not have permission to edit other users!"
+msgstr "У вас нет прав на изменение других пользователей!"
+
+#: users/views.py:57
+msgid "You are not logged in"
+msgstr "Вы не залогинены"
+
+#: users/views.py:68
+msgid "User successfully deleted"
+msgstr "Пользователь успешно удален"
+
+#: users/views.py:71
+msgid "You do not have permission to delete other users!"
+msgstr "У вас нет прав на удаление других пользователей!"
