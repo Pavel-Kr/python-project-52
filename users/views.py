@@ -69,3 +69,7 @@ class UserDeleteView(LoginRequiredMixin,
     template_name_field = 'user'
     error_url = reverse_lazy('users:index')
     error_message = _('You do not have permission to delete other users!')
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()

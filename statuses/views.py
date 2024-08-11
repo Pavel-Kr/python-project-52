@@ -13,5 +13,5 @@ class StatusListView(LoginRequiredMixin, ListView):
     context_object_name = 'statuses'
 
     def handle_no_permission(self) -> HttpResponseRedirect:
-        messages.error(_('You are not logged in'))
+        messages.error(self.request, _('You are not logged in'))
         return super().handle_no_permission()
