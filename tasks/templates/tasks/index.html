@@ -33,7 +33,7 @@
             <td>{{ task.performer|default:"" }}</td>
             <td>{{ task.created_at }}</td>
             <td>
-                <div><a href="#">{% translate "Update" %}</a></div>
+                <div><a href="{% url "tasks:update" task.id %}">{% translate "Update" %}</a></div>
                 <div><a href="#">{% translate "Delete" %}</a></div>
             </td>
         </tr>
