@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from tasks.models import Task
-from tasks.forms import TaskCreationForm
+from tasks.forms import TaskForm
 
 
 class TaskListView(LoginRequiredMixin, ListView):
@@ -39,7 +39,7 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'tasks/create.html'
-    form_class = TaskCreationForm
+    form_class = TaskForm
     success_url = reverse_lazy('tasks:index')
 
     def form_valid(self, form):
