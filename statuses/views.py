@@ -1,4 +1,7 @@
+from django.db import models
+from django.http import HttpRequest, HttpResponse
 from django.http.response import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -55,3 +58,11 @@ class StatusDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
         return super().handle_no_permission()
+
+    def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
+        try:
+            return super().post(request, *args, **kwargs)
+        except models.ProtectedError:
+            messages.error(request,
+                           _('Cannot delete status because it is in use'))
+            return redirect('statuses:index')
