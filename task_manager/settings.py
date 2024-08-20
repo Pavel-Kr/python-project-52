@@ -59,7 +59,8 @@ INSTALLED_APPS = [
 
     'main_app',
     'users',
-    'statuses'
+    'statuses',
+    'tasks',
 ]
 
 MIDDLEWARE = [

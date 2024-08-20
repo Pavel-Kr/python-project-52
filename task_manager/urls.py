@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('main_app.urls', namespace='main')),
     path('users/', include('users.urls', namespace='users')),
     path('statuses/', include('statuses.urls', namespace='statuses')),
+    path('tasks/', include('tasks.urls', namespace='tasks')),
 ]
 
 if not settings.TESTING:

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+{% translate "Tasks" %}
+{% endblock %}
+
+{% block content %}
+<h1>{% translate "Tasks" %}</h1>
+<a href="#" class="btn btn-primary mt-3">{% translate "Create task" %}</a>
+<table class="table table-striped mt-4">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>{% translate "Name" %}</th>
+            <th>{% translate "Status" %}</th>
+            <th>{% translate "Author" %}</th>
+            {% comment %}Translators: Task performer or executor{% endcomment %}
+            <th>{% translate "Performer" %}</th>
+            <th>{% translate "Creation date" %}</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks  %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.performer|default:"" }}</td>
+            <td>{{ task.created_at }}</td>
+            <td>
+                <div><a href="#">{% translate "Update" %}</a></div>
+                <div><a href="#">{% translate "Delete" %}</a></div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

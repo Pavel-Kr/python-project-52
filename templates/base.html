@@ -16,13 +16,16 @@
             <a href="{% url "main:index" %}" class="navbar-brand">{% translate "Task manager" %}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>          
+              </button>
             <div class="collapse navbar-collapse" id="navbarToggler">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a href="{% url "users:index" %}" class="nav-link">{% translate "Users" %}</a></li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a href="{% url "statuses:index" %}" class="nav-link">{% translate "Statuses" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url "tasks:index" %}" class="nav-link">{% translate "Tasks" %}</a>
                     </li>
                     <li class="nav-item">
                         <form action="{% url "users:logout" %}" method="post">
