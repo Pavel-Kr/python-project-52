@@ -34,7 +34,7 @@
             <td>{{ task.created_at }}</td>
             <td>
                 <div><a href="{% url "tasks:update" task.id %}">{% translate "Update" %}</a></div>
-                <div><a href="#">{% translate "Delete" %}</a></div>
+                <div><a href="{% url "tasks:delete" task.id %}">{% translate "Delete" %}</a></div>
             </td>
         </tr>
         {% endfor %}
