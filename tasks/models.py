@@ -20,8 +20,10 @@ class Task(models.Model):
                                on_delete=models.PROTECT,
                                verbose_name=_('Author'),
                                related_name='created_tasks')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Creation time'))
-    updated_at = models.DateTimeField(auto_now=True, verbose_name=_('Last update time'))
+    created_at = models.DateTimeField(auto_now_add=True,
+                                      verbose_name=_('Creation time'))
+    updated_at = models.DateTimeField(auto_now=True,
+                                      verbose_name=_('Last update time'))
 
     def __str__(self) -> str:
         return self.name
