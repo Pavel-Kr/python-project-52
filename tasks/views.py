@@ -1,7 +1,11 @@
 from typing import Any
 from django.db.models.query import QuerySet
 from django.http.response import HttpResponseRedirect
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.views.generic import (CreateView,
+                                  DeleteView,
+                                  DetailView,
+                                  ListView,
+                                  UpdateView)
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
@@ -62,7 +66,10 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('Task successfully updated')
 
 
-class TaskDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(LoginRequiredMixin,
+                     UserPassesTestMixin,
+                     SuccessMessageMixin,
+                     DeleteView):
     template_name = 'tasks/delete.html'
     model = Task
     context_object_name = 'task'
