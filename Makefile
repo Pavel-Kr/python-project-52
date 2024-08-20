@@ -20,3 +20,9 @@ lint:
 
 test:
 	poetry run python3 manage.py test
+
+makemessages:
+	poetry run python3 manage.py makemessages -a
+
+compilemessages:
+	poetry run python3 manage.py compilemessages
