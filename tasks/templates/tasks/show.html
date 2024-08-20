@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block title %}
+{% translate "View task" %}
+{% endblock %}
+
+{% block content %}
+<h1>{% translate "View task" %}</h1>
+<div class="card mt-4">
+    <div class="card-header text-bg-secondary pt-3">
+        <h3>{{ task.name }}</h3>
+    </div>
+    <div class="card-body">
+        <p>{{ task.description }}</p>
+        <hr>
+        <div class="row mb-2">
+            <div class="col">
+                {% translate "Author" %}
+            </div>
+            <div class="col">
+                {{ task.author }}
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                {% comment %}Translators: Task performer{% endcomment %}
+                {% translate "Performer" %}
+            </div>
+            <div class="col">
+                {{ task.performer|default:"" }}
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                {% translate "Status" %}
+            </div>
+            <div class="col">
+                {{ task.status }}
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col">
+                {% translate "Creation date" %}
+            </div>
+            <div class="col">
+                {{ task.created_at }}
+            </div>
+        </div>
+        <div class="mt-4"><a href="#">{% translate "Update" %}</a></div>
+        <div><a href="#">{% translate "Delete" %}</a></div>
+    </div>
+</div>
+{% endblock %}
