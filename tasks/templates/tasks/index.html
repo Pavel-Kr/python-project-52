@@ -9,7 +9,7 @@
 
 {% block content %}
 <h1>{% translate "Tasks" %}</h1>
-<a href="#" class="btn btn-primary mt-3">{% translate "Create task" %}</a>
+<a href="{% url "tasks:create" %}" class="btn btn-primary mt-3">{% translate "Create task" %}</a>
 <table class="table table-striped mt-4">
     <thead>
         <tr>

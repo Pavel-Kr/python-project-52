@@ -1,9 +1,11 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.views.generic import ListView
+from django.views.generic import CreateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 from tasks.models import Task
+from tasks.forms import TaskCreationForm
 
 
 class TaskListView(LoginRequiredMixin, ListView):
@@ -18,3 +20,13 @@ class TaskListView(LoginRequiredMixin, ListView):
         ).select_related(
             'status'
         )
+
+
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    template_name = 'tasks/create.html'
+    form_class = TaskCreationForm
+    success_url = reverse_lazy('tasks:index')
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
