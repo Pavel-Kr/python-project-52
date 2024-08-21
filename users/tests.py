@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 
 class UsersTestCase(TestCase):
-    fixtures = ['data.json']
+    fixtures = ['users.json']
 
     def test_create_user(self):
         test_user = {
-            'username': 'test_user',
+            'username': 'test_user3',
             'password1': 'gfccdjhl1',
             'password2': 'gfccdjhl1'
         }
