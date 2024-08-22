@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=255, verbose_name=_('name'), unique=True)
+    name = models.CharField(max_length=255, verbose_name=_('Name'), unique=True)
     description = models.TextField(verbose_name=_('Description'))
     # Translators: Task performer
     performer = models.ForeignKey(to=User,
