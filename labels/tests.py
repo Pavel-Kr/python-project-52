@@ -17,7 +17,7 @@ def build_login_url(next):
 
 
 class TasksTestCase(TestCase):
-    fixtures = ['users.json', 'tasks.json', 'labels.json', 'statuses.json']
+    fixtures = ['users.json', 'tasks.json', 'labels.json', 'statuses.json', 'ltc.json']
 
     def test_read_labels(self):
         login_test_user(self.client)

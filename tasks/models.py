@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 
+from labels.models import Label
+
 
 class Task(models.Model):
     name = models.CharField(max_length=255, verbose_name=_('Name'), unique=True)
@@ -24,6 +26,10 @@ class Task(models.Model):
                                       verbose_name=_('Creation time'))
     updated_at = models.DateTimeField(auto_now=True,
                                       verbose_name=_('Last update time'))
+    labels = models.ManyToManyField(
+        to=Label,
+        through='LabelTaskConnection'
+    )
 
     def __str__(self) -> str:
         return self.name
@@ -32,3 +38,8 @@ class Task(models.Model):
         verbose_name = _('task')
         verbose_name_plural = _('tasks')
         ordering = ['id']
+
+
+class LabelTaskConnection(models.Model):
+    label = models.ForeignKey(to=Label, on_delete=models.PROTECT)
+    task = models.ForeignKey(to=Task, on_delete=models.CASCADE)

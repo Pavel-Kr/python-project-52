@@ -1,0 +1,26 @@
+[
+    {
+        "model": "tasks.labeltaskconnection",
+        "pk": 1,
+        "fields": {
+            "label": 1,
+            "task": 1
+        }
+    },
+    {
+        "model": "tasks.labeltaskconnection",
+        "pk": 2,
+        "fields": {
+            "label": 2,
+            "task": 1
+        }
+    },
+    {
+        "model": "tasks.labeltaskconnection",
+        "pk": 3,
+        "fields": {
+            "label": 1,
+            "task": 2
+        }
+    }
+]

@@ -1,4 +1,7 @@
+from django.db.models import ProtectedError
+from django.http import HttpRequest, HttpResponse
 from django.http.response import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
@@ -55,3 +58,10 @@ class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
         return super().handle_no_permission()
+
+    def post(self, request: HttpRequest, *args: str, **kwargs) -> HttpResponse:
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(self.request, _('Cannot delete label because it is used'))
+            return redirect('labels:index')
