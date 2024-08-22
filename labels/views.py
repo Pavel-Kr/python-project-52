@@ -1,5 +1,5 @@
 from django.http.response import HttpResponseRedirect
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
@@ -26,6 +26,19 @@ class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = LabelForm
     success_message = _('Label successfully created')
     success_url = reverse_lazy('labels:index')
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
+
+
+class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Label
+    template_name = 'labels/update.html'
+    form_class = LabelForm
+    success_message = _('Label successfully updated')
+    success_url = reverse_lazy('labels:index')
+    context_object_name = 'label'
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))
