@@ -28,6 +28,9 @@
                         <a href="{% url "tasks:index" %}" class="nav-link">{% translate "Tasks" %}</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{% url "labels:index" %}" class="nav-link">{% translate "Labels" %}</a>
+                    </li>
+                    <li class="nav-item">
                         <form action="{% url "users:logout" %}" method="post">
                             {% csrf_token %}
                             <input type="submit" class="nav-link" value="{% translate "Log out" %}">
