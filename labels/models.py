@@ -5,7 +5,7 @@ from tasks.models import Task
 
 
 class Label(models.Model):
-    name = models.CharField(max_length=255, verbose_name=_('Name'))
+    name = models.CharField(max_length=255, verbose_name=_('Name'), unique=True)
     tasks = models.ManyToManyField(to=Task, related_name='labels', blank=True)
     created_at = models.DateTimeField(
         auto_now_add=True,
