@@ -27,7 +27,7 @@
             <td>{{ label.created_at }}</td>
             <td>
                 <div><a href="{% url "labels:update" label.id %}">{% translate "Update" %}</a></div>
-                <div><a href="#">{% translate "Delete" %}</a></div>
+                <div><a href="{% url "labels:delete" label.id %}">{% translate "Delete" %}</a></div>
             </td>
         </tr>
         {% endfor %}

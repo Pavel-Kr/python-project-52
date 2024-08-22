@@ -125,7 +125,7 @@ class TasksTestCase(TestCase):
         self.assertRedirects(response, redir_url)
         self.assertContains(response, 'alert-danger')
 
-    def test_label_delete_wrong_user(self):
+    def test_label_delete_with_tasks(self):
         login_test_user(self.client)
 
         # Label 1 has associated tasks, should not delete
