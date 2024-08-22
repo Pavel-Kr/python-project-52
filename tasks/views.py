@@ -1,4 +1,5 @@
 from typing import Any
+from django.core.exceptions import PermissionDenied
 from django.db.models.query import QuerySet
 from django.http.response import HttpResponseRedirect
 from django.views.generic import (CreateView,
@@ -30,6 +31,10 @@ class TaskListView(LoginRequiredMixin, ListView):
             'status'
         )
 
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
+
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     template_name = 'tasks/show.html'
@@ -45,6 +50,10 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
             'status'
         )
 
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
+
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'tasks/create.html'
@@ -56,6 +65,10 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
+
 
 class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     template_name = 'tasks/update.html'
@@ -64,6 +77,10 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     context_object_name = 'task'
     success_url = reverse_lazy('tasks:index')
     success_message = _('Task successfully updated')
+
+    def handle_no_permission(self) -> HttpResponseRedirect:
+        messages.error(self.request, _('You are not logged in'))
+        return super().handle_no_permission()
 
 
 class TaskDeleteView(LoginRequiredMixin,
@@ -82,5 +99,10 @@ class TaskDeleteView(LoginRequiredMixin,
         return task.author.pk == self.request.user.pk
 
     def handle_no_permission(self) -> HttpResponseRedirect:
-        messages.error(self.request, self.permission_denied_message)
-        return redirect('tasks:index')
+        try:
+            if not self.request.user.is_authenticated:
+                messages.error(self.request, _('You are not logged in'))
+            return super().handle_no_permission()
+        except PermissionDenied:
+            messages.error(self.request, self.permission_denied_message)
+            return redirect('tasks:index')

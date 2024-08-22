@@ -1,0 +1,41 @@
+[
+    {
+        "model": "tasks.task",
+        "pk": 1,
+        "fields": {
+            "name": "Test task 1",
+            "description": "Test description",
+            "performer": null,
+            "status": 1,
+            "author": 2,
+            "created_at": "2024-08-21T11:36:32.491Z",
+            "updated_at": "2024-08-21T11:36:32.491Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 2,
+        "fields": {
+            "name": "Test task 2",
+            "description": "Test description",
+            "performer": 3,
+            "status": 1,
+            "author": 2,
+            "created_at": "2024-08-21T11:37:07.916Z",
+            "updated_at": "2024-08-21T11:37:07.916Z"
+        }
+    },
+    {
+        "model": "tasks.task",
+        "pk": 3,
+        "fields": {
+            "name": "Test task 3",
+            "description": "Test description",
+            "performer": 4,
+            "status": 2,
+            "author": 3,
+            "created_at": "2024-08-21T11:37:37.344Z",
+            "updated_at": "2024-08-21T11:37:37.344Z"
+        }
+    }
+]
