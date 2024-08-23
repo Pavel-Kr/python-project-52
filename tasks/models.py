@@ -29,7 +29,8 @@ class Task(models.Model):
     labels = models.ManyToManyField(
         to=Label,
         through='LabelTaskConnection',
-        blank=True
+        blank=True,
+        verbose_name=_('Labels')
     )
 
     def __str__(self) -> str:
