@@ -49,6 +49,8 @@
                 {{ task.created_at }}
             </div>
         </div>
+        {% if task.labels.all %}
+        <p>{% translate "Labels" %}:</p>
         <ul>
             {% for label in task.labels.all %}
             <li>
@@ -56,6 +58,7 @@
             </li>
             {% endfor %}
         </ul>
+        {% endif %}
         <div class="mt-4"><a href="{% url "tasks:update" task.id %}">{% translate "Update" %}</a></div>
         <div><a href="{% url "tasks:delete" task.id %}">{% translate "Delete" %}</a></div>
     </div>
