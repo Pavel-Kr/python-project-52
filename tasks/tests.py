@@ -17,7 +17,13 @@ def build_login_url(next):
 
 
 class TasksTestCase(TestCase):
-    fixtures = ['users.json', 'tasks.json', 'statuses.json']
+    fixtures = [
+        'users.json',
+        'tasks.json',
+        'statuses.json',
+        'labels.json',
+        'ltc.json'
+    ]
 
     def test_read_tasks(self):
         login_test_user(self.client)
@@ -151,3 +157,49 @@ class TasksTestCase(TestCase):
         # Check that entry was not deleted
         db_entry = Task.objects.get(pk=3)
         self.assertIsNotNone(db_entry)
+
+    def test_filter_by_status(self):
+        login_test_user(self.client)
+
+        get_url = f'{reverse("tasks:index")}?status=1'
+
+        response = self.client.get(get_url)
+
+        # Test task 3 should be excluded by filter
+        self.assertContains(response, 'Test task', count=2)
+        self.assertNotContains(response, 'Test task 3')
+
+    def test_filter_by_author(self):
+        login_test_user(self.client)
+
+        get_url = f'{reverse("tasks:index")}?performer=3'
+
+        response = self.client.get(get_url)
+
+        # Test tasks 1 and 3 should be excluded by filter
+        self.assertContains(response, 'Test task', count=1)
+        self.assertNotContains(response, 'Test task 1')
+        self.assertNotContains(response, 'Test task 3')
+
+    def test_filter_by_label(self):
+        login_test_user(self.client)
+
+        get_url = f'{reverse("tasks:index")}?labels=1'
+
+        response = self.client.get(get_url)
+
+        # Test task 3 should be excluded by filter
+        self.assertContains(response, 'Test task', count=2)
+        self.assertNotContains(response, 'Test task 3')
+
+    def test_filter_self_tasks(self):
+        # Test user created 2 tasks
+        login_test_user(self.client)
+
+        get_url = f'{reverse("tasks:index")}?self_tasks=on'
+
+        response = self.client.get(get_url)
+
+        # Test task 3 should be excluded by filter
+        self.assertContains(response, 'Test task', count=2)
+        self.assertNotContains(response, 'Test task 3')
