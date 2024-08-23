@@ -20,6 +20,7 @@ uvicorn = "^0.30.5"
 django-bootstrap5 = "^24.2"
 whitenoise = "^6.7.0"
 ipython = "^8.26.0"
+django-filter = "^24.3"
 
 
 [tool.poetry.group.dev.dependencies]

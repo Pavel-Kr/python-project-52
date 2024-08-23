@@ -10,6 +10,12 @@
 {% block content %}
 <h1>{% translate "Tasks" %}</h1>
 <a href="{% url "tasks:create" %}" class="btn btn-primary mt-3">{% translate "Create task" %}</a>
+<div class="border mt-3 rounded p-3 border-secondary-subtle bg-body-tertiary">
+    <form action="" method="get">
+        {% bootstrap_form filter.form %}
+        <input type="submit" value="{% translate "Show" %}" class="btn btn-primary">
+    </form>
+</div>
 <table class="table table-striped mt-4">
     <thead>
         <tr>

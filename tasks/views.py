@@ -5,7 +5,6 @@ from django.http.response import HttpResponseRedirect
 from django.views.generic import (CreateView,
                                   DeleteView,
                                   DetailView,
-                                  ListView,
                                   UpdateView)
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -13,14 +12,17 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import redirect
+from django_filters.views import FilterView
 
 from tasks.models import Task
 from tasks.forms import TaskForm
+from tasks.filters import TaskFilter
 
 
-class TaskListView(LoginRequiredMixin, ListView):
+class TaskListView(LoginRequiredMixin, FilterView):
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
 
     def get_queryset(self) -> QuerySet[Any]:
         return Task.objects.select_related(
@@ -30,6 +32,11 @@ class TaskListView(LoginRequiredMixin, ListView):
         ).select_related(
             'status'
         )
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['self_tasks'] = self.request.GET.get('self_tasks', None)
+        return context
 
     def handle_no_permission(self) -> HttpResponseRedirect:
         messages.error(self.request, _('You are not logged in'))

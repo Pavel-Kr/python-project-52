@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
     'django_bootstrap5',
     'django_extensions',
+    'django_filters',
 
     'main_app',
     'users',
