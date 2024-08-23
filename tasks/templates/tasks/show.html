@@ -49,6 +49,13 @@
                 {{ task.created_at }}
             </div>
         </div>
+        <ul>
+            {% for label in task.labels.all %}
+            <li>
+                {{ label.name }}
+            </li>
+            {% endfor %}
+        </ul>
         <div class="mt-4"><a href="{% url "tasks:update" task.id %}">{% translate "Update" %}</a></div>
         <div><a href="{% url "tasks:delete" task.id %}">{% translate "Delete" %}</a></div>
     </div>
