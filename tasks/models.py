@@ -28,7 +28,8 @@ class Task(models.Model):
                                       verbose_name=_('Last update time'))
     labels = models.ManyToManyField(
         to=Label,
-        through='LabelTaskConnection'
+        through='LabelTaskConnection',
+        blank=True
     )
 
     def __str__(self) -> str:
