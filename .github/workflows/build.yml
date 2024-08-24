@@ -36,3 +36,10 @@ jobs:
             local_username: ${{ github.actor }}
           env:
             ROLLBAR_ACCESS_TOKEN: ${{ secrets.ROLLBAR_ACCESS_TOKEN }}
+
+        - name: Publish code coverage
+          uses: paambaati/codeclimate-action@v9.0.0
+          env:
+            CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          with:
+            coverageCommand: make test-cov

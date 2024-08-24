@@ -21,6 +21,10 @@ lint:
 test:
 	poetry run python3 manage.py test
 
+test-cov:
+	poetry run coverage run manage.py test
+	poetry run coverage xml
+
 makemessages:
 	poetry run python3 manage.py makemessages -a
 
