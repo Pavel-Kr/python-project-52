@@ -25,6 +25,7 @@ class TaskListView(LoginRequiredMixin, FilterView):
     filterset_class = TaskFilter
 
     def get_queryset(self) -> QuerySet[Any]:
+        dummy()
         return Task.objects.select_related(
             'author'
         ).select_related(
