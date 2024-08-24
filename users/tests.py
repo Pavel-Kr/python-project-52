@@ -28,7 +28,7 @@ class UsersTestCase(TestCase):
         response = self.client.post(rl('users:create'),
                                     data=test_user,
                                     follow=False)
-        self.assertRedirects(response, rl('users:login'))
+        self.assertRedirects(response, rl('login'))
         db_user = User.objects.get(username='test_user')
         self.assertIsNotNone(db_user)
 
@@ -54,7 +54,7 @@ class UsersTestCase(TestCase):
 
     def test_update_user_from_anonymous(self):
         update_path = reverse('users:update', kwargs={'pk': 1})
-        redirect_path = f"{reverse('users:login')}?next={update_path}"
+        redirect_path = f"{reverse('login')}?next={update_path}"
         response = self.client.post(update_path)
         self.assertRedirects(response, redirect_path)
 
@@ -89,7 +89,7 @@ class UsersTestCase(TestCase):
 
     def test_delete_user_from_anonymous(self):
         delete_path = reverse('users:delete', kwargs={'pk': 1})
-        redirect_path = f"{reverse('users:login')}?next={delete_path}"
+        redirect_path = f"{reverse('login')}?next={delete_path}"
         response = self.client.get(delete_path)
         self.assertRedirects(response, redirect_path)
 

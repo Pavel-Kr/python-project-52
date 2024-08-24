@@ -19,10 +19,13 @@ from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
 
 from task_manager import settings
+from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('main_app.urls', namespace='main')),
+    path('login/', views.UserLoginView.as_view(), name='login'),
+    path('logout/', views.UserLogoutView.as_view(), name='logout'),
     path('users/', include('users.urls', namespace='users')),
     path('statuses/', include('statuses.urls', namespace='statuses')),
     path('tasks/', include('tasks.urls', namespace='tasks')),

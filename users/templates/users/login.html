@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="{% url "users:login" %}" method="post">
+<form action="{% url "login" %}" method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}">
     {% bootstrap_form form %}

@@ -13,7 +13,7 @@ def login_test_user(client: Client):
 
 
 def build_login_url(next):
-    return f'{reverse("users:login")}?next={next}'
+    return f'{reverse("login")}?next={next}'
 
 
 class TasksTestCase(TestCase):

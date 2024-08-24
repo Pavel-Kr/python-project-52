@@ -30,7 +30,7 @@ class StatusesTestCase(TestCase):
 
     def test_statuses_read_anonymous(self):
         req_path = reverse('statuses:index')
-        redirect_path = f'{reverse("users:login")}?next={req_path}'
+        redirect_path = f'{reverse("login")}?next={req_path}'
         response = self.client.get(req_path, follow=True)
         self.assertRedirects(response, redirect_path)
         self.assertContains(response, 'alert-danger')
@@ -50,7 +50,7 @@ class StatusesTestCase(TestCase):
 
     def test_statuses_create_anonymous(self):
         req_path = reverse('statuses:create')
-        redirect_path = f'{reverse("users:login")}?next={req_path}'
+        redirect_path = f'{reverse("login")}?next={req_path}'
         status = {
             'name': 'Test'
         }
@@ -76,7 +76,7 @@ class StatusesTestCase(TestCase):
 
     def test_statuses_update_anonymous(self):
         req_path = reverse('statuses:update', kwargs={'pk': 1})
-        redirect_path = f'{reverse("users:login")}?next={req_path}'
+        redirect_path = f'{reverse("login")}?next={req_path}'
         status = {
             'name': 'Test'
         }
@@ -97,7 +97,7 @@ class StatusesTestCase(TestCase):
 
     def test_statuses_delete_anonymous(self):
         req_path = reverse('statuses:delete', kwargs={'pk': 3})
-        redirect_path = f'{reverse("users:login")}?next={req_path}'
+        redirect_path = f'{reverse("login")}?next={req_path}'
         response = self.client.post(req_path, follow=True)
         self.assertRedirects(response, redirect_path)
         self.assertContains(response, 'alert-danger')
