@@ -21,7 +21,6 @@ django-bootstrap5 = "^24.2"
 whitenoise = "^6.7.0"
 ipython = "^8.26.0"
 django-filter = "^24.3"
-rollbar = "^1.0.0"
 coverage = "^7.6.1"
 
 
