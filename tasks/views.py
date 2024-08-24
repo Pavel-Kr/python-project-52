@@ -28,7 +28,7 @@ class TaskListView(LoginRequiredMixin, FilterView):
         return Task.objects.select_related(
             'author'
         ).select_related(
-            'performer'
+            'executor'
         ).select_related(
             'status'
         )
@@ -52,7 +52,7 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
         return super().get_queryset().select_related(
             'author'
         ).select_related(
-            'performer'
+            'executor'
         ).select_related(
             'status'
         )

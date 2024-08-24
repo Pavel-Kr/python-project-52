@@ -45,7 +45,6 @@ msgid "Create label"
 msgstr "Создать метку"
 
 #: labels/templates/labels/create.html:15
-#: labels/templates/labels/update.html:15
 #: statuses/templates/statuses/create.html:15
 #: tasks/templates/tasks/create.html:15
 msgid "Create"
@@ -76,7 +75,7 @@ msgstr "Да, удалить"
 msgid "Creation date"
 msgstr "Дата создания"
 
-#: labels/templates/labels/index.html:29
+#: labels/templates/labels/index.html:29 labels/templates/labels/update.html:15
 #: statuses/templates/statuses/index.html:29
 #: tasks/templates/tasks/index.html:42 tasks/templates/tasks/show.html:62
 #: users/templates/users/index.html:30
@@ -184,11 +183,10 @@ msgstr "Только свои задачи"
 msgid "Description"
 msgstr "Описание"
 
-#. Translators: Task performer or executor
-#. Translators: Task performer
+#. Translators: Task executor
 #: tasks/models.py:16 tasks/templates/tasks/index.html:27
 #: tasks/templates/tasks/show.html:30
-msgid "Performer"
+msgid "Executor"
 msgstr "Исполнитель"
 
 #: tasks/models.py:20 tasks/templates/tasks/index.html:24
@@ -337,6 +335,9 @@ msgstr "У вас нет прав для изменения другого по�
 #: users/views.py:85
 msgid "Cannot delete user because it is in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
+
+#~ msgid "Performer"
+#~ msgstr "Исполнитель"
 
 #~ msgid "Log out"
 #~ msgstr "Выход"

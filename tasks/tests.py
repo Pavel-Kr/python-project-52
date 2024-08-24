@@ -105,7 +105,7 @@ class TasksTestCase(TestCase):
         update_task = {
             'name': 'Test update',
             'description': 'Testing task update',
-            'performer': 4,
+            'executor': 4,
             'status': 2,
             'author': 3
         }
@@ -126,7 +126,7 @@ class TasksTestCase(TestCase):
         update_task = {
             'name': 'Test update',
             'description': 'Testing task update',
-            'performer': 4,
+            'executor': 4,
             'status': 2,
             'author': 3
         }
@@ -193,7 +193,7 @@ class TasksTestCase(TestCase):
     def test_filter_by_author(self):
         login_test_user(self.client)
 
-        get_url = f'{reverse("tasks:index")}?performer=3'
+        get_url = f'{reverse("tasks:index")}?executor=3'
 
         response = self.client.get(get_url)
 

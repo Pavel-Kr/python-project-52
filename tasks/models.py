@@ -8,12 +8,12 @@ from labels.models import Label
 class Task(models.Model):
     name = models.CharField(max_length=255, verbose_name=_('Name'), unique=True)
     description = models.TextField(verbose_name=_('Description'))
-    # Translators: Task performer
-    performer = models.ForeignKey(to=User,
+    # Translators: Task executor
+    executor = models.ForeignKey(to=User,
                                   on_delete=models.SET_NULL,
                                   blank=True,
                                   null=True,
-                                  verbose_name=_('Performer'),
+                                  verbose_name=_('Executor'),
                                   related_name='assiged_tasks')
     status = models.ForeignKey(to='statuses.Status',
                                on_delete=models.PROTECT,
