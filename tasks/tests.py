@@ -43,6 +43,27 @@ class TasksTestCase(TestCase):
         self.assertRedirects(response, redir_url)
         self.assertContains(response, 'alert-danger')
 
+    def test_display_task(self):
+        login_test_user(self.client)
+
+        tasks_url = reverse('tasks:details', kwargs={'pk': 1})
+        response = self.client.get(tasks_url)
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Test task 1')
+        self.assertContains(response, 'Test description')
+        self.assertContains(response, 'New')
+        self.assertContains(response, 'Test label 1')
+        self.assertContains(response, 'Test label 2')
+
+    def test_display_task_unauth(self):
+        tasks_url = reverse('tasks:details', kwargs={'pk': 1})
+        redir_url = build_login_url(tasks_url)
+        response = self.client.get(tasks_url, follow=True)
+
+        # Check login redirect
+        self.assertRedirects(response, redir_url)
+        self.assertContains(response, 'alert-danger')
+
     def test_create_task(self):
         login_test_user(self.client)
 
