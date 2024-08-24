@@ -7,7 +7,10 @@ from labels.models import Label
 
 
 class TaskFilter(django_filters.FilterSet):
-    labels = django_filters.ModelChoiceFilter(queryset=Label.objects.all())
+    labels = django_filters.ModelChoiceFilter(
+        queryset=Label.objects.all(),
+        label=_('Label')
+    )
     self_tasks = django_filters.BooleanFilter(
         method='filter_user',
         widget=forms.CheckboxInput,
