@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db import models
@@ -14,6 +13,7 @@ from django.utils.translation import gettext_lazy as _
 
 from users.forms import RegisterForm, EditForm
 from users.utils import SameUserMixin
+from users.models import User
 
 
 class UserListView(ListView):

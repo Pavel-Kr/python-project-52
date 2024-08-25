@@ -175,6 +175,8 @@ LOGIN_URL = reverse_lazy('login')
 LOGIN_REDIRECT_URL = reverse_lazy('main:index')
 LOGOUT_REDIRECT_URL = reverse_lazy('main:index')
 
+AUTH_USER_MODEL = 'users.User'
+
 ROLLBAR = {
     'access_token': os.getenv('ROLLBAR_TOKEN'),
     'environment': 'development' if DEBUG else 'production',

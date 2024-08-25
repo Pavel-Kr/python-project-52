@@ -1,6 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse_lazy as rl, reverse
-from django.contrib.auth.models import User
+
+from users.models import User
 
 
 def login_test_user(client: Client, credentials=None):
