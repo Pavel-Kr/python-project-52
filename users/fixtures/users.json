@@ -1,14 +1,14 @@
 [
     {
-        "model": "auth.user",
+        "model": "users.user",
         "pk": 2,
         "fields": {
             "password": "pbkdf2_sha256$720000$1zGBWcknvD861M4RW0EK2i$sLYTZ/6gyEGQMipFENMJEOmI39sLH5TyM0ZgL4dM26E=",
             "last_login": null,
             "is_superuser": false,
             "username": "test_user",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Test",
+            "last_name": "User",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -18,15 +18,15 @@
         }
     },
     {
-        "model": "auth.user",
+        "model": "users.user",
         "pk": 3,
         "fields": {
             "password": "pbkdf2_sha256$720000$h83UZ0x9hTnSyOeabfGXJE$RnL5GmUbj03lcWUbyFcUIW9TbBJR/7B6518HjWdXBjw=",
             "last_login": null,
             "is_superuser": false,
             "username": "test_user1",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Test",
+            "last_name": "User 1",
             "email": "",
             "is_staff": false,
             "is_active": true,
@@ -36,15 +36,15 @@
         }
     },
     {
-        "model": "auth.user",
+        "model": "users.user",
         "pk": 4,
         "fields": {
             "password": "pbkdf2_sha256$720000$h83UZ0x9hTnSyOeabfGXJE$RnL5GmUbj03lcWUbyFcUIW9TbBJR/7B6518HjWdXBjw=",
             "last_login": null,
             "is_superuser": false,
             "username": "test_user2",
-            "first_name": "",
-            "last_name": "",
+            "first_name": "Test",
+            "last_name": "User 2",
             "email": "",
             "is_staff": false,
             "is_active": true,

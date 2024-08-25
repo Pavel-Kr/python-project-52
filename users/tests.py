@@ -22,6 +22,8 @@ class UsersTestCase(TestCase):
 
     def test_create_user(self):
         test_user = {
+            'first_name': 'Test',
+            'last_name': 'User 3',
             'username': 'test_user3',
             'password1': 'gfccdjhl1',
             'password2': 'gfccdjhl1'
@@ -40,7 +42,8 @@ class UsersTestCase(TestCase):
         user = User.objects.get(username='test_user')
         update_path = reverse('users:update', kwargs={'pk': user.pk})
         update_data = {
-            'first_name': 'Testname',
+            'first_name': 'Test firstname',
+            'last_name': 'Test lastname',
             # Save the password
             'username': 'test_user',
             'password1': 'gfccdjhl1',
@@ -51,7 +54,8 @@ class UsersTestCase(TestCase):
         self.assertRedirects(response, reverse('users:index'))
         # Check that user is updated in the database
         user.refresh_from_db()
-        self.assertEqual(user.first_name, 'Testname')
+        self.assertEqual(user.first_name, 'Test firstname')
+        self.assertEqual(user.last_name, 'Test lastname')
 
     def test_update_user_from_anonymous(self):
         update_path = reverse('users:update', kwargs={'pk': 1})
