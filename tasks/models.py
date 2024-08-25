@@ -10,11 +10,11 @@ class Task(models.Model):
     description = models.TextField(verbose_name=_('Description'))
     # Translators: Task executor
     executor = models.ForeignKey(to=User,
-                                  on_delete=models.SET_NULL,
-                                  blank=True,
-                                  null=True,
-                                  verbose_name=_('Executor'),
-                                  related_name='assiged_tasks')
+                                 on_delete=models.SET_NULL,
+                                 blank=True,
+                                 null=True,
+                                 verbose_name=_('Executor'),
+                                 related_name='assiged_tasks')
     status = models.ForeignKey(to='statuses.Status',
                                on_delete=models.PROTECT,
                                verbose_name=_('Status'))
