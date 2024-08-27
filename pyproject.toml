@@ -19,9 +19,7 @@ gunicorn = "^22.0.0"
 uvicorn = "^0.30.5"
 django-bootstrap5 = "^24.2"
 whitenoise = "^6.7.0"
-ipython = "^8.26.0"
 django-filter = "^24.3"
-coverage = "^7.6.1"
 django-extensions = "^3.2.3"
 django-debug-toolbar = "^4.4.6"
 rollbar = "0.16.3"
@@ -29,6 +27,8 @@ rollbar = "0.16.3"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.0"
+ipython = "^8.26.0"
+coverage = "^7.6.1"
 
 [build-system]
 requires = ["poetry-core"]
