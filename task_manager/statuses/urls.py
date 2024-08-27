@@ -1,6 +1,6 @@
 from django.urls import path
 
-from statuses import views
+from . import views
 
 
 app_name = 'statuses'
