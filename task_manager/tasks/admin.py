@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from tasks.models import Task, LabelTaskConnection
+from .models import Task, LabelTaskConnection
 
 
 class LTCInline(admin.TabularInline):

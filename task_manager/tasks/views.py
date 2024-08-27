@@ -14,9 +14,9 @@ from django.utils.translation import gettext_lazy as _
 from django.shortcuts import redirect
 from django_filters.views import FilterView
 
-from tasks.models import Task
-from tasks.forms import TaskForm
-from tasks.filters import TaskFilter
+from .models import Task
+from .forms import TaskForm
+from .filters import TaskFilter
 
 
 class TaskListView(LoginRequiredMixin, FilterView):

@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from tasks.models import Task
+from .models import Task
 
 
 def login_test_user(client: Client):

@@ -2,7 +2,7 @@ import django_filters
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
-from tasks.models import Task
+from .models import Task
 from labels.models import Label
 
 
