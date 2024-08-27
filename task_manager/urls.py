@@ -19,7 +19,7 @@ from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
 
 from task_manager import settings
-from users import views
+from task_manager.users import views
 from task_manager.views import IndexView
 
 urlpatterns = [
@@ -27,7 +27,7 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('login/', views.UserLoginView.as_view(), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='logout'),
-    path('users/', include('users.urls', namespace='users')),
+    path('users/', include('task_manager.users.urls', namespace='users')),
     path('statuses/', include('statuses.urls', namespace='statuses')),
     path('tasks/', include('tasks.urls', namespace='tasks')),
     path('labels/', include('labels.urls', namespace='labels')),

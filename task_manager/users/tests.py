@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse_lazy as rl, reverse
 
-from users.models import User
+from .models import User
 
 
 def login_test_user(client: Client, credentials=None):

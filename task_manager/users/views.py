@@ -11,9 +11,9 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
-from users.forms import RegisterForm, EditForm
-from users.utils import SameUserMixin
-from users.models import User
+from .forms import RegisterForm, EditForm
+from .utils import SameUserMixin
+from .models import User
 
 
 class UserListView(ListView):
