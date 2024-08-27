@@ -5,8 +5,7 @@ description = "Task manager website"
 authors = ["Pavel Krivosheev <pkrivosheev@bk.ru>"]
 readme = "README.md"
 packages = [
-    { include = "task_manager" },
-    { include = "main_app" }
+    { include = "task_manager" }
 ]
 
 [tool.poetry.dependencies]
