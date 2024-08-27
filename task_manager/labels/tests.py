@@ -1,7 +1,7 @@
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from labels.models import Label
+from .models import Label
 
 
 def login_test_user(client: Client):

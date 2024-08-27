@@ -9,8 +9,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 
-from labels.models import Label
-from labels.forms import LabelForm
+from .models import Label
+from .forms import LabelForm
 
 
 class LabelListView(LoginRequiredMixin, ListView):

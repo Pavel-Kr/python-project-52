@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from labels.models import Label
+from .models import Label
 
 
 admin.site.register(Label)
