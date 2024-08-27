@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'django_extensions',
     'django_filters',
 
-    'main_app',
     'users',
     'statuses',
     'tasks',
@@ -172,8 +171,8 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = reverse_lazy('login')
-LOGIN_REDIRECT_URL = reverse_lazy('main:index')
-LOGOUT_REDIRECT_URL = reverse_lazy('main:index')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 AUTH_USER_MODEL = 'users.User'
 

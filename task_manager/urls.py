@@ -20,10 +20,11 @@ from debug_toolbar.toolbar import debug_toolbar_urls
 
 from task_manager import settings
 from users import views
+from task_manager.views import IndexView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('main_app.urls', namespace='main')),
+    path('', IndexView.as_view(), name='index'),
     path('login/', views.UserLoginView.as_view(), name='login'),
     path('logout/', views.UserLogoutView.as_view(), name='logout'),
     path('users/', include('users.urls', namespace='users')),
