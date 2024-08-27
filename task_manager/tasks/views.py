@@ -17,9 +17,10 @@ from django_filters.views import FilterView
 from .models import Task
 from .forms import TaskForm
 from .filters import TaskFilter
+from task_manager.mixins import LoginRequiredMessageMixin
 
 
-class TaskListView(LoginRequiredMixin, FilterView):
+class TaskListView(LoginRequiredMessageMixin, FilterView):
     template_name = 'tasks/index.html'
     context_object_name = 'tasks'
     filterset_class = TaskFilter
@@ -38,12 +39,8 @@ class TaskListView(LoginRequiredMixin, FilterView):
         context['self_tasks'] = self.request.GET.get('self_tasks', None)
         return context
 
-    def handle_no_permission(self) -> HttpResponseRedirect:
-        messages.error(self.request, _('You are not logged in'))
-        return super().handle_no_permission()
 
-
-class TaskDetailView(LoginRequiredMixin, DetailView):
+class TaskDetailView(LoginRequiredMessageMixin, DetailView):
     template_name = 'tasks/show.html'
     model = Task
     context_object_name = 'task'
@@ -57,12 +54,10 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
             'status'
         )
 
-    def handle_no_permission(self) -> HttpResponseRedirect:
-        messages.error(self.request, _('You are not logged in'))
-        return super().handle_no_permission()
 
-
-class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class TaskCreateView(LoginRequiredMessageMixin,
+                     SuccessMessageMixin,
+                     CreateView):
     template_name = 'tasks/create.html'
     form_class = TaskForm
     success_url = reverse_lazy('tasks:index')
@@ -72,22 +67,16 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def handle_no_permission(self) -> HttpResponseRedirect:
-        messages.error(self.request, _('You are not logged in'))
-        return super().handle_no_permission()
 
-
-class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TaskUpdateView(LoginRequiredMessageMixin,
+                     SuccessMessageMixin,
+                     UpdateView):
     template_name = 'tasks/update.html'
     form_class = TaskForm
     model = Task
     context_object_name = 'task'
     success_url = reverse_lazy('tasks:index')
     success_message = _('Task successfully updated')
-
-    def handle_no_permission(self) -> HttpResponseRedirect:
-        messages.error(self.request, _('You are not logged in'))
-        return super().handle_no_permission()
 
 
 class TaskDeleteView(LoginRequiredMixin,
