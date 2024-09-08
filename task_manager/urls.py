@@ -34,6 +34,8 @@ urlpatterns = [
     ),
     path('tasks/', include('task_manager.tasks.urls', namespace='tasks')),
     path('labels/', include('task_manager.labels.urls', namespace='labels')),
+
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 if not settings.TESTING:
